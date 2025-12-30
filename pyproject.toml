@@ -38,7 +38,7 @@ dev = [
 ]
 
 [project.scripts]
-snapper-mcp = "snapper_mcp.server:main"
+snapper-mcp = "snapper_mcp.server:run"
 
 [project.urls]
 Homepage = "https://github.com/danielrosehill/BTRFS-Snapper-MCP"

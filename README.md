@@ -1,5 +1,7 @@
 # BTRFS Snapper MCP
 
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-blueviolet?logo=anthropic)](https://claude.ai/code)
+
 An MCP (Model Context Protocol) server for managing BTRFS snapshots via [Snapper](http://snapper.io/) and monitoring BTRFS filesystem health. Exposes two unified tools with action-based dispatch to minimize tool proliferation while providing full snapshot management and disk health monitoring.
 
 ## Features
