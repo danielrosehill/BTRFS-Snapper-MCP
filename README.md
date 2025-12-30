@@ -1,5 +1,6 @@
 # BTRFS Snapper MCP
 
+[![PyPI](https://img.shields.io/pypi/v/snapper-mcp)](https://pypi.org/project/snapper-mcp/)
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-blueviolet?logo=anthropic)](https://claude.ai/code)
 
 An MCP (Model Context Protocol) server for managing BTRFS snapshots via [Snapper](http://snapper.io/) and monitoring BTRFS filesystem health. Exposes two unified tools with action-based dispatch to minimize tool proliferation while providing full snapshot management and disk health monitoring.
@@ -14,18 +15,23 @@ An MCP (Model Context Protocol) server for managing BTRFS snapshots via [Snapper
 
 ## Installation
 
-### Using uv (recommended)
+### From PyPI (recommended)
 
 ```bash
-cd /path/to/BTRFS-Snapper-MCP
-uv venv
-source .venv/bin/activate
-uv pip install -e .
+pip install snapper-mcp
 ```
 
-### Using pip
+### Using uvx (no install required)
 
 ```bash
+uvx snapper-mcp
+```
+
+### From source
+
+```bash
+git clone https://github.com/danielrosehill/BTRFS-Snapper-MCP.git
+cd BTRFS-Snapper-MCP
 pip install -e .
 ```
 
@@ -53,28 +59,25 @@ Add to your MCP settings (e.g., `~/.claude/settings.json` or Claude Desktop conf
 {
   "mcpServers": {
     "btrfs-snapper": {
-      "command": "/path/to/BTRFS-Snapper-MCP/.venv/bin/snapper-mcp",
-      "env": {
-        "SNAPPER_MCP_DEFAULT_CONFIG": "root",
-        "SNAPPER_MCP_DEFAULT_MOUNT": "/",
-        "SNAPPER_MCP_USE_SUDO": "true"
-      }
+      "command": "uvx",
+      "args": ["snapper-mcp"]
     }
   }
 }
 ```
 
-### With uvx (no local install)
+### With custom configuration
 
 ```json
 {
   "mcpServers": {
     "btrfs-snapper": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/danielrosehill/BTRFS-Snapper-MCP", "snapper-mcp"],
+      "args": ["snapper-mcp"],
       "env": {
         "SNAPPER_MCP_DEFAULT_CONFIG": "root",
-        "SNAPPER_MCP_DEFAULT_MOUNT": "/"
+        "SNAPPER_MCP_DEFAULT_MOUNT": "/",
+        "SNAPPER_MCP_USE_SUDO": "true"
       }
     }
   }
